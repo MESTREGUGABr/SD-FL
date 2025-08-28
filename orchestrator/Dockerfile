@@ -1,19 +1,42 @@
-# orchestrator/Dockerfile
+# syntax=docker/dockerfile:1.6
 
-# 1. Use a mesma imagem base do Python.
-FROM python:3.11-slim
+# Base mínima e consistente
+FROM python:3.11-slim AS base
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PYTHONPATH="/app"
 
-# 2. Defina o diretório de trabalho.
 WORKDIR /app
-ENV PYTHONPATH="/app"
+RUN mkdir -p /app/metrics
 
-# 3. Copie o arquivo de dependências e instale-as.
-COPY orchestrator/requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
 
-# 4. Copie o código compartilhado e o código específico do serviço.
+# (Opcional mas recomendado p/ TF) libs de runtime
+# Evite build-essential se você usa só wheels; mantém a imagem leve
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libgomp1 \
+ && rm -rf /var/lib/apt/lists/*
+
+# --------- STAGE: deps (só dependências) ----------
+FROM base AS deps
+
+# Copie apenas o requirements para maximizar reaproveitamento
+COPY orchestrator/requirements.txt /tmp/requirements.txt
+
+# Cache de pip entre builds (wheels)
+RUN --mount=type=cache,target=/root/.cache/pip \
+    pip install -r /tmp/requirements.txt
+
+# --------- STAGE: runtime final ----------
+FROM base
+
+# Traga tudo que o pip instalou da stage deps
+COPY --from=deps /usr/local /usr/local
+
+# Copie o código (mudar código não toca nas deps)
 COPY ./common/ /app/common/
 COPY ./orchestrator/ /app/orchestrator/
 
-# 5. Defina o comando para executar a aplicação.
-CMD ["python", "-u", "orchestrator/orchestrator.py"]
+# Logs “ao vivo”
+CMD ["python", "-u", "-m", "orchestrator.orchestrator"]

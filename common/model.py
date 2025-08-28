@@ -8,7 +8,8 @@ def create_simple_model():
     """
     model = tf.keras.models.Sequential([
         # Camada de entrada que achata a imagem 28x28 para um vetor de 784
-        tf.keras.layers.Flatten(input_shape=(28, 28)),
+         tf.keras.Input(shape=(28, 28)),
+        tf.keras.layers.Flatten(),
 
         # Primeira camada densa (totalmente conectada) com 128 neurônios e ativação ReLU
         tf.keras.layers.Dense(128, activation='relu'),

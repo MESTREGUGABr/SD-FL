@@ -1,0 +1,110 @@
+{
+    "total_training_duration_seconds": 40.28126788139343,
+    "metrics_by_round": [
+        {
+            "orchestrator_quant_time": 0.0007891654968261719,
+            "upload_payload_size_bytes": 474640,
+            "client_metrics": [
+                {
+                    "client_id": 1,
+                    "download_payload_size_bytes": 351091,
+                    "overhead_quant_client": 0.0004208087921142578,
+                    "overhead_dequant_client": 0.0032911300659179688,
+                    "rtt": 0.7039573192596436,
+                    "status": "success"
+                },
+                {
+                    "client_id": 2,
+                    "download_payload_size_bytes": 353727,
+                    "overhead_quant_client": 0.0003902912139892578,
+                    "overhead_dequant_client": 0.0032181739807128906,
+                    "rtt": 2.0283052921295166,
+                    "status": "success"
+                },
+                {
+                    "client_id": 3,
+                    "download_payload_size_bytes": 350886,
+                    "overhead_quant_client": 0.00042724609375,
+                    "overhead_dequant_client": 0.003361225128173828,
+                    "rtt": 8.422740697860718,
+                    "status": "success"
+                }
+            ],
+            "round": 1,
+            "successful_clients": 3,
+            "round_duration_seconds": 11.22267770767212,
+            "loss": 0.8319406509399414,
+            "accuracy": 0.8137000203132629
+        },
+        {
+            "orchestrator_quant_time": 0.0004868507385253906,
+            "upload_payload_size_bytes": 454629,
+            "client_metrics": [
+                {
+                    "client_id": 1,
+                    "download_payload_size_bytes": 346597,
+                    "overhead_quant_client": 0.00032138824462890625,
+                    "overhead_dequant_client": 0.003022909164428711,
+                    "rtt": 0.6152572631835938,
+                    "status": "success"
+                },
+                {
+                    "client_id": 2,
+                    "download_payload_size_bytes": 349022,
+                    "overhead_quant_client": 0.0003421306610107422,
+                    "overhead_dequant_client": 0.0029878616333007812,
+                    "rtt": 1.702765703201294,
+                    "status": "success"
+                },
+                {
+                    "client_id": 3,
+                    "download_payload_size_bytes": 347271,
+                    "overhead_quant_client": 0.002170085906982422,
+                    "overhead_dequant_client": 0.00301361083984375,
+                    "rtt": 8.223758220672607,
+                    "status": "success"
+                }
+            ],
+            "round": 2,
+            "successful_clients": 3,
+            "round_duration_seconds": 10.619439363479614,
+            "loss": 0.5199691653251648,
+            "accuracy": 0.8610000014305115
+        },
+        {
+            "orchestrator_quant_time": 0.0014827251434326172,
+            "upload_payload_size_bytes": 449192,
+            "client_metrics": [
+                {
+                    "client_id": 1,
+                    "download_payload_size_bytes": 345219,
+                    "overhead_quant_client": 0.0003361701965332031,
+                    "overhead_dequant_client": 0.002992391586303711,
+                    "rtt": 0.5921359062194824,
+                    "status": "success"
+                },
+                {
+                    "client_id": 2,
+                    "download_payload_size_bytes": 345452,
+                    "overhead_quant_client": 0.0014729499816894531,
+                    "overhead_dequant_client": 0.0034034252166748047,
+                    "rtt": 2.0192184448242188,
+                    "status": "success"
+                },
+                {
+                    "client_id": 3,
+                    "download_payload_size_bytes": 343454,
+                    "overhead_quant_client": 0.001608133316040039,
+                    "overhead_dequant_client": 0.0029408931732177734,
+                    "rtt": 8.018147706985474,
+                    "status": "success"
+                }
+            ],
+            "round": 3,
+            "successful_clients": 3,
+            "round_duration_seconds": 10.713075637817383,
+            "loss": 0.42552557587623596,
+            "accuracy": 0.8810999989509583
+        }
+    ]
+}
