@@ -3,3 +3,4 @@ requests
 numpy
 tensorflow
 tensorflow-federated
+prometheus-client

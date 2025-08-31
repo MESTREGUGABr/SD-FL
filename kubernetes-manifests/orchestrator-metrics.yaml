@@ -1,0 +1,102 @@
+# PVC para salvar métricas JSON do orquestrador (opcional)
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: metrics-pvc
+  namespace: sd-fl
+spec:
+  accessModes: ["ReadWriteOnce"]
+  resources:
+    requests:
+      storage: 1Gi
+---
+# Pod utilitário para acessar o PVC (kubectl cp / debug)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: metrics-access
+  namespace: sd-fl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: metrics-access
+  template:
+    metadata:
+      labels:
+        app: metrics-access
+    spec:
+      containers:
+        - name: busybox
+          image: busybox
+          command: ["sleep", "infinity"]
+          volumeMounts:
+            - name: metrics
+              mountPath: /data
+      volumes:
+        - name: metrics
+          persistentVolumeClaim:
+            claimName: metrics-pvc
+---
+# Orchestrator
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: orchestrator-batch
+  namespace: sd-fl
+spec:
+  completions: 10        # roda 10 vezes
+  parallelism: 1         # uma por vez (evita conflito no PVC RWO)
+  backoffLimit: 0        # não re-tentar; se falhar você vê o erro
+  template:
+    metadata:
+      labels:
+        app: orchestrator-batch
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: orchestrator
+          image: raiaraujo/sd-fl:orchestrator-v12
+          imagePullPolicy: IfNotPresent
+          command: ["python", "-u", "-m", "orchestrator.orchestrator"]
+          env:
+            - name: PYTHONPATH
+              value: "/app"
+            # injeta POD_NAME para diferenciar nome do arquivo
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: QUANT_BITS
+              value: "8"
+          volumeMounts:
+            - name: metrics
+              mountPath: /app/metrics
+          resources:
+            requests: { cpu: "250m", memory: "512Mi" }
+            limits:   { cpu: "1",    memory: "2Gi" }
+      volumes:
+        - name: metrics
+          persistentVolumeClaim:
+            claimName: metrics-pvc
+
+---
+# Service do orchestrator com porta http e metrics
+apiVersion: v1
+kind: Service
+metadata:
+  name: orchestrator
+  namespace: sd-fl
+  labels:
+    app: fl-orchestrator
+spec:
+  selector:
+    app: fl-orchestrator
+  ports:
+    - name: http
+      port: 5000
+      targetPort: 5000
+    - name: metrics
+      port: 8000
+      targetPort: 8000
+  type: ClusterIP

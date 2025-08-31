@@ -1,9 +1,9 @@
 import time
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Response
 import tensorflow as tf
 import numpy as np
 from common.model import create_simple_model
-from common.quantizacao import quantize32to8, dequantize8to32
+from common.quantizacao import quantize32to8, dequantize8to32, dequantize16to32, quantize32to16
 import os
 import traceback
 
@@ -43,24 +43,33 @@ def train_local_model(weights):
 def fit():
     try:
         payload = request.json
-        
+        quant = str(payload.get('quant', '8'))
         t0 = time.time()
+        if quant == '32':
+            weights = [np.array(w, dtype=np.float32) for w in payload['weights']]
+            dequant_time = 0.0
+        elif quant == '16':
+            weights_q = [np.array(w, dtype=np.int16) for w in payload['weights']]
+            scales = payload['scales']; zero_points = payload['zero_points']
+            weights = dequantize16to32(weights_q, scales, zero_points)
+            dequant_time = time.time() - t0
+        else:  
+            weights_q = [np.array(w, dtype=np.int8) for w in payload['weights']]
+            scales = payload['scales']; zero_points = payload['zero_points']
+            weights = dequantize8to32(weights_q, scales, zero_points)
+            dequant_time = time.time() - t0
+        
+        updated_weights = train_local_model(weights)
 
-        weights_q = [np.array(w, dtype=np.int8) for w in payload['weights']]
-        scales = payload['scales']
-        zero_points = payload['zero_points']
-        weights_dequantized = dequantize8to32(weights_q, scales, zero_points)
-        dequant_time = time.time() - t0
-        
-        print(f"Cliente {client_id}: Iniciando treinamento local...")
-        
-        updated_weights = train_local_model(weights_dequantized)
-        
-        print(f"Cliente {client_id}: Treinamento concluído.")
-        
         t1 = time.time()
-        q_new, new_scales, new_zps = quantize32to8(updated_weights)
-        quant_time = time.time() - t1
+        if quant == '32':
+            q_new = [w.astype(np.float32) for w in updated_weights]
+            new_scales, new_zps = None, None
+        elif quant == '16':
+            q_new, new_scales, new_zps = quantize32to16(updated_weights)
+        else:  
+            q_new, new_scales, new_zps = quantize32to8(updated_weights)
+        quant_time = time.time() - t1 if quant != '32' else 0.0
         
         return jsonify({
             "weights": [w.tolist() for w in q_new],

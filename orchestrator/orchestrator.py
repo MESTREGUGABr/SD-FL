@@ -1,3 +1,4 @@
+import datetime
 import os
 import numpy as np
 import time
@@ -7,7 +8,7 @@ from common.model import create_simple_model
 from orchestrator.client_manager import distribute_and_collect, CLIENT_ENDPOINTS
 from orchestrator.aggregation import aggregate_weights
 
-NUM_ROUNDS = 3
+NUM_ROUNDS = 10
 
 print("Carregando dados de teste do MNIST...")
 _, (x_test, y_test) = tf.keras.datasets.mnist.load_data()
@@ -72,10 +73,13 @@ def run_federated_training():
         'total_training_duration_seconds': total_training_duration,
         'metrics_by_round': all_metrics_by_round
     }
+
+    run_id = os.environ.get("POD_NAME", "run") + "-" + datetime.datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
     os.makedirs('/app/metrics', exist_ok=True)
-    with open('/app/metrics/federated_training_metrics-8.json', 'w') as f:
+    out_path = f'/app/metrics/federated_training_metrics-8-atrasos-{run_id}.json'
+    with open(out_path, 'w') as f:
         json.dump(final_results, f, indent=4)
-        print("Métricas de treinamento federado salvas em 'metrics/federated_training_metrics.json'.")
+        print("Métricas de treinamento federado salvas em 'metrics/federated_training_metrics-.json'.")
 
 if __name__ == '__main__':
     print("Orquestrador esperando 10 segundos para os clientes iniciarem...")

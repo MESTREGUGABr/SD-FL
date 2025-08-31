@@ -1,0 +1,355 @@
+{
+    "total_training_duration_seconds": 51.98600244522095,
+    "metrics_by_round": [
+        {
+            "orchestrator_quant_time": 0.0,
+            "upload_payload_size_bytes": 2225556,
+            "client_metrics": [
+                {
+                    "client_id": 1,
+                    "download_payload_size_bytes": 2125829,
+                    "overhead_quant_client": 0.0,
+                    "overhead_dequant_client": 0.0,
+                    "rtt": 0.7879550457000732,
+                    "status": "success"
+                },
+                {
+                    "client_id": 2,
+                    "download_payload_size_bytes": 2125834,
+                    "overhead_quant_client": 0.0,
+                    "overhead_dequant_client": 0.0,
+                    "rtt": 0.8117468357086182,
+                    "status": "success"
+                },
+                {
+                    "client_id": 3,
+                    "download_payload_size_bytes": 2125673,
+                    "overhead_quant_client": 0.0,
+                    "overhead_dequant_client": 0.0,
+                    "rtt": 0.7897861003875732,
+                    "status": "success"
+                }
+            ],
+            "round": 1,
+            "successful_clients": 3,
+            "round_duration_seconds": 2.5698623657226562,
+            "loss": 0.8636519312858582,
+            "accuracy": 0.78329998254776
+        },
+        {
+            "orchestrator_quant_time": 0.0,
+            "upload_payload_size_bytes": 2227423,
+            "client_metrics": [
+                {
+                    "client_id": 1,
+                    "download_payload_size_bytes": 2124701,
+                    "overhead_quant_client": 0.0,
+                    "overhead_dequant_client": 0.0,
+                    "rtt": 0.7944753170013428,
+                    "status": "success"
+                },
+                {
+                    "client_id": 2,
+                    "download_payload_size_bytes": 2125225,
+                    "overhead_quant_client": 0.0,
+                    "overhead_dequant_client": 0.0,
+                    "rtt": 0.8168432712554932,
+                    "status": "success"
+                },
+                {
+                    "client_id": 3,
+                    "download_payload_size_bytes": 2124895,
+                    "overhead_quant_client": 0.0,
+                    "overhead_dequant_client": 0.0,
+                    "rtt": 0.8024048805236816,
+                    "status": "success"
+                }
+            ],
+            "round": 2,
+            "successful_clients": 3,
+            "round_duration_seconds": 2.592150926589966,
+            "loss": 0.5337412357330322,
+            "accuracy": 0.8597999811172485
+        },
+        {
+            "orchestrator_quant_time": 0.0,
+            "upload_payload_size_bytes": 2226806,
+            "client_metrics": [
+                {
+                    "client_id": 1,
+                    "download_payload_size_bytes": 2124707,
+                    "overhead_quant_client": 0.0,
+                    "overhead_dequant_client": 0.0,
+                    "rtt": 0.7964363098144531,
+                    "status": "success"
+                },
+                {
+                    "client_id": 2,
+                    "download_payload_size_bytes": 2124318,
+                    "overhead_quant_client": 0.0,
+                    "overhead_dequant_client": 0.0,
+                    "rtt": 0.784677267074585,
+                    "status": "success"
+                },
+                {
+                    "client_id": 3,
+                    "download_payload_size_bytes": 2124402,
+                    "overhead_quant_client": 0.0,
+                    "overhead_dequant_client": 0.0,
+                    "rtt": 0.7831745147705078,
+                    "status": "success"
+                }
+            ],
+            "round": 3,
+            "successful_clients": 3,
+            "round_duration_seconds": 2.5390737056732178,
+            "loss": 0.43518832325935364,
+            "accuracy": 0.8816999793052673
+        },
+        {
+            "orchestrator_quant_time": 0.0,
+            "upload_payload_size_bytes": 2226626,
+            "client_metrics": [
+                {
+                    "client_id": 1,
+                    "download_payload_size_bytes": 2123989,
+                    "overhead_quant_client": 0.0,
+                    "overhead_dequant_client": 0.0,
+                    "rtt": 1.1793787479400635,
+                    "status": "success"
+                },
+                {
+                    "client_id": 2,
+                    "download_payload_size_bytes": 2124186,
+                    "overhead_quant_client": 0.0,
+                    "overhead_dequant_client": 0.0,
+                    "rtt": 1.1513712406158447,
+                    "status": "success"
+                },
+                {
+                    "client_id": 3,
+                    "download_payload_size_bytes": 2123821,
+                    "overhead_quant_client": 0.0,
+                    "overhead_dequant_client": 0.0,
+                    "rtt": 1.1788325309753418,
+                    "status": "success"
+                }
+            ],
+            "round": 4,
+            "successful_clients": 3,
+            "round_duration_seconds": 3.692875385284424,
+            "loss": 0.3887268304824829,
+            "accuracy": 0.8898000121116638
+        },
+        {
+            "orchestrator_quant_time": 0.0,
+            "upload_payload_size_bytes": 2225600,
+            "client_metrics": [
+                {
+                    "client_id": 1,
+                    "download_payload_size_bytes": 2123599,
+                    "overhead_quant_client": 0.0,
+                    "overhead_dequant_client": 0.0,
+                    "rtt": 0.8373000621795654,
+                    "status": "success"
+                },
+                {
+                    "client_id": 2,
+                    "download_payload_size_bytes": 2123335,
+                    "overhead_quant_client": 0.0,
+                    "overhead_dequant_client": 0.0,
+                    "rtt": 0.823127269744873,
+                    "status": "success"
+                },
+                {
+                    "client_id": 3,
+                    "download_payload_size_bytes": 2123426,
+                    "overhead_quant_client": 0.0,
+                    "overhead_dequant_client": 0.0,
+                    "rtt": 0.8246827125549316,
+                    "status": "success"
+                }
+            ],
+            "round": 5,
+            "successful_clients": 3,
+            "round_duration_seconds": 2.6582388877868652,
+            "loss": 0.3621405065059662,
+            "accuracy": 0.8960000276565552
+        },
+        {
+            "orchestrator_quant_time": 0.0,
+            "upload_payload_size_bytes": 2225220,
+            "client_metrics": [
+                {
+                    "client_id": 1,
+                    "download_payload_size_bytes": 2123306,
+                    "overhead_quant_client": 0.0,
+                    "overhead_dequant_client": 0.0,
+                    "rtt": 0.8281407356262207,
+                    "status": "success"
+                },
+                {
+                    "client_id": 2,
+                    "download_payload_size_bytes": 2123081,
+                    "overhead_quant_client": 0.0,
+                    "overhead_dequant_client": 0.0,
+                    "rtt": 0.80588698387146,
+                    "status": "success"
+                },
+                {
+                    "client_id": 3,
+                    "download_payload_size_bytes": 2122867,
+                    "overhead_quant_client": 0.0,
+                    "overhead_dequant_client": 0.0,
+                    "rtt": 0.8027832508087158,
+                    "status": "success"
+                }
+            ],
+            "round": 6,
+            "successful_clients": 3,
+            "round_duration_seconds": 2.610462188720703,
+            "loss": 0.34414976835250854,
+            "accuracy": 0.9002000093460083
+        },
+        {
+            "orchestrator_quant_time": 0.0,
+            "upload_payload_size_bytes": 2224823,
+            "client_metrics": [
+                {
+                    "client_id": 1,
+                    "download_payload_size_bytes": 2122458,
+                    "overhead_quant_client": 0.0,
+                    "overhead_dequant_client": 0.0,
+                    "rtt": 0.8100500106811523,
+                    "status": "success"
+                },
+                {
+                    "client_id": 2,
+                    "download_payload_size_bytes": 2122560,
+                    "overhead_quant_client": 0.0,
+                    "overhead_dequant_client": 0.0,
+                    "rtt": 0.807847261428833,
+                    "status": "success"
+                },
+                {
+                    "client_id": 3,
+                    "download_payload_size_bytes": 2122781,
+                    "overhead_quant_client": 0.0,
+                    "overhead_dequant_client": 0.0,
+                    "rtt": 0.8196022510528564,
+                    "status": "success"
+                }
+            ],
+            "round": 7,
+            "successful_clients": 3,
+            "round_duration_seconds": 2.609196424484253,
+            "loss": 0.3321250379085541,
+            "accuracy": 0.9025999903678894
+        },
+        {
+            "orchestrator_quant_time": 0.0,
+            "upload_payload_size_bytes": 2224306,
+            "client_metrics": [
+                {
+                    "client_id": 1,
+                    "download_payload_size_bytes": 2122193,
+                    "overhead_quant_client": 0.0,
+                    "overhead_dequant_client": 0.0,
+                    "rtt": 0.8086576461791992,
+                    "status": "success"
+                },
+                {
+                    "client_id": 2,
+                    "download_payload_size_bytes": 2121948,
+                    "overhead_quant_client": 0.0,
+                    "overhead_dequant_client": 0.0,
+                    "rtt": 0.7908163070678711,
+                    "status": "success"
+                },
+                {
+                    "client_id": 3,
+                    "download_payload_size_bytes": 2122229,
+                    "overhead_quant_client": 0.0,
+                    "overhead_dequant_client": 0.0,
+                    "rtt": 0.7965202331542969,
+                    "status": "success"
+                }
+            ],
+            "round": 8,
+            "successful_clients": 3,
+            "round_duration_seconds": 2.5707616806030273,
+            "loss": 0.32361167669296265,
+            "accuracy": 0.9038000106811523
+        },
+        {
+            "orchestrator_quant_time": 0.0,
+            "upload_payload_size_bytes": 2223812,
+            "client_metrics": [
+                {
+                    "client_id": 1,
+                    "download_payload_size_bytes": 2121546,
+                    "overhead_quant_client": 0.0,
+                    "overhead_dequant_client": 0.0,
+                    "rtt": 0.8168108463287354,
+                    "status": "success"
+                },
+                {
+                    "client_id": 2,
+                    "download_payload_size_bytes": 2121302,
+                    "overhead_quant_client": 0.0,
+                    "overhead_dequant_client": 0.0,
+                    "rtt": 0.8079326152801514,
+                    "status": "success"
+                },
+                {
+                    "client_id": 3,
+                    "download_payload_size_bytes": 2121395,
+                    "overhead_quant_client": 0.0,
+                    "overhead_dequant_client": 0.0,
+                    "rtt": 0.815748929977417,
+                    "status": "success"
+                }
+            ],
+            "round": 9,
+            "successful_clients": 3,
+            "round_duration_seconds": 2.6124141216278076,
+            "loss": 0.3178179860115051,
+            "accuracy": 0.9052000045776367
+        },
+        {
+            "orchestrator_quant_time": 0.0,
+            "upload_payload_size_bytes": 2223283,
+            "client_metrics": [
+                {
+                    "client_id": 1,
+                    "download_payload_size_bytes": 2121161,
+                    "overhead_quant_client": 0.0,
+                    "overhead_dequant_client": 0.0,
+                    "rtt": 0.8009910583496094,
+                    "status": "success"
+                },
+                {
+                    "client_id": 2,
+                    "download_payload_size_bytes": 2120955,
+                    "overhead_quant_client": 0.0,
+                    "overhead_dequant_client": 0.0,
+                    "rtt": 0.7964651584625244,
+                    "status": "success"
+                },
+                {
+                    "client_id": 3,
+                    "download_payload_size_bytes": 2120818,
+                    "overhead_quant_client": 0.0,
+                    "overhead_dequant_client": 0.0,
+                    "rtt": 0.8594503402709961,
+                    "status": "success"
+                }
+            ],
+            "round": 10,
+            "successful_clients": 3,
+            "round_duration_seconds": 2.6325364112854004,
+            "loss": 0.3131820261478424,
+            "accuracy": 0.9070000052452087
+        }
+    ]
+}

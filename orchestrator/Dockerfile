@@ -38,5 +38,7 @@ COPY --from=deps /usr/local /usr/local
 COPY ./common/ /app/common/
 COPY ./orchestrator/ /app/orchestrator/
 
+EXPOSE 8000
+
 # Logs “ao vivo”
 CMD ["python", "-u", "-m", "orchestrator.orchestrator"]

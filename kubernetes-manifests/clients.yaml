@@ -1,0 +1,201 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: sd-fl
+---
+# ========== CLIENT 1: rápido (50ms ±10ms) ==========
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-1
+  namespace: sd-fl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: client-1
+  template:
+    metadata:
+      labels:
+        app: client-1
+        app-group: fl-client
+        client_id: "1"
+    spec:
+      initContainers:
+        - name: netem
+          image: nicolaka/netshoot:latest
+          securityContext:
+            capabilities:
+              add: ["NET_ADMIN"]
+          command: ["sh","-c"]
+          args:
+            - |
+              echo "[client-1] aplicando netem na eth0...";
+              tc qdisc del dev eth0 root 2>/dev/null || true
+              # delay 100ms com jitter 20ms (gaussiano), sem perda, sem limitar banda
+              tc qdisc add dev eth0 root netem delay 100ms 20ms distribution normal
+              tc qdisc show dev eth0
+      containers:
+        - name: client
+          image: raiaraujo/sd-fl:fl-client-v2
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: CLIENT_ID
+              value: "0"
+          ports:
+            - name: http
+              containerPort: 5000
+          resources:
+            requests: { cpu: "500m", memory: "1Gi" }
+            limits:   { cpu: "1",    memory: "2Gi" }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-1
+  namespace: sd-fl
+spec:
+  selector:
+    app: client-1
+  ports:
+    - name: http
+      port: 5000
+      targetPort: 5000
+  type: ClusterIP
+---
+# ========== CLIENT 2: médio (2000ms ±200ms, perda 0.3%, banda 20mbit) ==========
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-2
+  namespace: sd-fl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: client-2
+  template:
+    metadata:
+      labels:
+        app: client-2
+        app-group: fl-client
+        client_id: "2"
+    spec:
+      initContainers:
+        - name: netem
+          image: nicolaka/netshoot:latest
+          securityContext:
+            capabilities:
+              add: ["NET_ADMIN"]
+          command: ["sh","-c"]
+          args:
+            - |
+              echo "[client-2] aplicando netem na eth0...";
+              tc qdisc del dev eth0 root 2>/dev/null || true
+              # atraso + jitter + perda leve
+              tc qdisc add dev eth0 root handle 1: netem delay 500ms 50ms distribution normal loss 0.1%
+              # limitar banda com tbf (token bucket filter)
+              tc qdisc add dev eth0 parent 1: handle 10: tbf rate 50mbit burst 32kbit latency 200ms
+              tc qdisc show dev eth0
+      containers:
+        - name: client
+          image: raiaraujo/sd-fl:fl-client-v2
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: CLIENT_ID
+              value: "1"
+          ports:
+            - name: http
+              containerPort: 5000
+          resources:
+            requests: { cpu: "250m", memory: "512Mi" }
+            limits:   { cpu: "500m", memory: "1Gi" }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-2
+  namespace: sd-fl
+spec:
+  selector:
+    app: client-2
+  ports:
+    - name: http
+      port: 5000
+      targetPort: 5000
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-3
+  namespace: sd-fl
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: client-3 }
+  template:
+    metadata:
+      labels:
+        app: client-3
+        app-group: fl-client
+        client_id: "3"
+    spec:
+      # 1) baixar MNIST primeiro
+      initContainers:
+        - name: fetch-mnist
+          image: curlimages/curl:8.7.1
+          command: ["sh","-c"]
+          args:
+            - |
+              set -euo pipefail
+              echo "[client-3] baixando MNIST..."
+              mkdir -p "${KERAS_HOME}/datasets"
+              # baixa direto para o cache do Keras
+              curl -fSL --retry 5 --retry-delay 2 \
+                https://storage.googleapis.com/tensorflow/tf-keras-datasets/mnist.npz \
+                -o "${KERAS_HOME}/datasets/mnist.npz"
+              ls -lh "${KERAS_HOME}/datasets"
+          env:
+            - name: KERAS_HOME
+              value: /cache/.keras
+          volumeMounts:
+            - name: keras-cache
+              mountPath: /cache
+        # 2) aplicar netem DEPOIS do download
+        - name: netem
+          image: nicolaka/netshoot:latest
+          securityContext:
+            capabilities: { add: ["NET_ADMIN"] }
+          command: ["sh","-c"]
+          args:
+            - |
+              set -ex
+              tc qdisc del dev eth0 root 2>/dev/null || true
+              # limite de banda como root cria classe 1:1
+              tc qdisc add dev eth0 root handle 1: tbf rate 20mbit burst 32kbit latency 300ms
+              # netem como filho (delay/jitter/perda)
+              tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 100ms distribution normal loss 0.2%
+              tc qdisc show dev eth0
+      containers:
+        - name: client
+          image: raiaraujo/sd-fl:fl-client-v2
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: CLIENT_ID
+              value: "2"
+            # Keras procura o mnist.npz aqui
+            - name: KERAS_HOME
+              value: /cache/.keras
+          ports:
+            - name: http
+              containerPort: 5000
+          resources:
+            requests: { cpu: "100m", memory: "256Mi" }
+            limits:   { cpu: "250m", memory: "1Gi" }
+          volumeMounts:
+            - name: keras-cache
+              mountPath: /cache
+      volumes:
+        - name: keras-cache
+          emptyDir: {}

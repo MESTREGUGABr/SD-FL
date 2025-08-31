@@ -4,7 +4,7 @@ version: '3.8'
 services:
   # Serviço do Orquestrador
   orchestrator:
-    image: raiaraujo/sd-fl:orchestrator-v2
+    image: raiaraujo/sd-fl:orchestrator-v10
     command: python -m orchestrator.orchestrator
     # O 'depends_on' garante que os clientes iniciem primeiro
     depends_on:
@@ -14,16 +14,16 @@ services:
 
   # Nossos três clientes de FL
   client-1:
-    image: raiaraujo/sd-fl:fl-client-v2
+    image: raiaraujo/sd-fl:fl-client-v10
     environment:
       - CLIENT_ID=0 # Usado pelo client_app.py para carregar dados diferentes
 
   client-2:
-    image: raiaraujo/sd-fl:fl-client-v2
+    image: raiaraujo/sd-fl:fl-client-v10
     environment:
       - CLIENT_ID=1
 
   client-3:
-    image: raiaraujo/sd-fl:fl-client-v2
+    image: raiaraujo/sd-fl:fl-client-v10
     environment:
       - CLIENT_ID=2

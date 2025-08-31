@@ -1,0 +1,355 @@
+{
+    "total_training_duration_seconds": 75.56644463539124,
+    "metrics_by_round": [
+        {
+            "orchestrator_quant_time": 0.0007314682006835938,
+            "upload_payload_size_bytes": 474554,
+            "client_metrics": [
+                {
+                    "client_id": 1,
+                    "download_payload_size_bytes": 350495,
+                    "overhead_quant_client": 0.0003762245178222656,
+                    "overhead_dequant_client": 0.004327535629272461,
+                    "rtt": 0.6565577983856201,
+                    "status": "success"
+                },
+                {
+                    "client_id": 2,
+                    "download_payload_size_bytes": 351386,
+                    "overhead_quant_client": 0.00033164024353027344,
+                    "overhead_dequant_client": 0.003125905990600586,
+                    "rtt": 1.6486079692840576,
+                    "status": "success"
+                },
+                {
+                    "client_id": 3,
+                    "download_payload_size_bytes": 351804,
+                    "overhead_quant_client": 0.0003464221954345703,
+                    "overhead_dequant_client": 0.004067420959472656,
+                    "rtt": 2.8117964267730713,
+                    "status": "success"
+                }
+            ],
+            "round": 1,
+            "successful_clients": 3,
+            "round_duration_seconds": 5.17412543296814,
+            "loss": 0.8279315233230591,
+            "accuracy": 0.8129000067710876
+        },
+        {
+            "orchestrator_quant_time": 0.00046133995056152344,
+            "upload_payload_size_bytes": 452601,
+            "client_metrics": [
+                {
+                    "client_id": 1,
+                    "download_payload_size_bytes": 348314,
+                    "overhead_quant_client": 0.0003693103790283203,
+                    "overhead_dequant_client": 0.003253936767578125,
+                    "rtt": 0.5825145244598389,
+                    "status": "success"
+                },
+                {
+                    "client_id": 2,
+                    "download_payload_size_bytes": 348617,
+                    "overhead_quant_client": 0.00045990943908691406,
+                    "overhead_dequant_client": 0.0032334327697753906,
+                    "rtt": 1.4028162956237793,
+                    "status": "success"
+                },
+                {
+                    "client_id": 3,
+                    "download_payload_size_bytes": 349519,
+                    "overhead_quant_client": 0.00034618377685546875,
+                    "overhead_dequant_client": 0.003017425537109375,
+                    "rtt": 3.3298521041870117,
+                    "status": "success"
+                }
+            ],
+            "round": 2,
+            "successful_clients": 3,
+            "round_duration_seconds": 5.364124774932861,
+            "loss": 0.5173692107200623,
+            "accuracy": 0.8608999848365784
+        },
+        {
+            "orchestrator_quant_time": 0.0004611015319824219,
+            "upload_payload_size_bytes": 450386,
+            "client_metrics": [
+                {
+                    "client_id": 1,
+                    "download_payload_size_bytes": 346512,
+                    "overhead_quant_client": 0.00048089027404785156,
+                    "overhead_dequant_client": 0.0038008689880371094,
+                    "rtt": 0.6769287586212158,
+                    "status": "success"
+                },
+                {
+                    "client_id": 2,
+                    "download_payload_size_bytes": 345648,
+                    "overhead_quant_client": 0.0003521442413330078,
+                    "overhead_dequant_client": 0.0032873153686523438,
+                    "rtt": 1.3487753868103027,
+                    "status": "success"
+                },
+                {
+                    "client_id": 3,
+                    "download_payload_size_bytes": 348296,
+                    "overhead_quant_client": 0.0005340576171875,
+                    "overhead_dequant_client": 0.0031664371490478516,
+                    "rtt": 3.1105597019195557,
+                    "status": "success"
+                }
+            ],
+            "round": 3,
+            "successful_clients": 3,
+            "round_duration_seconds": 5.1894800662994385,
+            "loss": 0.4229932725429535,
+            "accuracy": 0.8826000094413757
+        },
+        {
+            "orchestrator_quant_time": 0.0003666877746582031,
+            "upload_payload_size_bytes": 448371,
+            "client_metrics": [
+                {
+                    "client_id": 1,
+                    "download_payload_size_bytes": 346267,
+                    "overhead_quant_client": 0.0003731250762939453,
+                    "overhead_dequant_client": 0.004029512405395508,
+                    "rtt": 0.9912855625152588,
+                    "status": "success"
+                },
+                {
+                    "client_id": 2,
+                    "download_payload_size_bytes": 344883,
+                    "overhead_quant_client": 0.000377655029296875,
+                    "overhead_dequant_client": 0.003557920455932617,
+                    "rtt": 1.430387020111084,
+                    "status": "success"
+                },
+                {
+                    "client_id": 3,
+                    "download_payload_size_bytes": 348686,
+                    "overhead_quant_client": 0.0003485679626464844,
+                    "overhead_dequant_client": 0.003111600875854492,
+                    "rtt": 2.812321186065674,
+                    "status": "success"
+                }
+            ],
+            "round": 4,
+            "successful_clients": 3,
+            "round_duration_seconds": 5.280946254730225,
+            "loss": 0.3793299198150635,
+            "accuracy": 0.8924999833106995
+        },
+        {
+            "orchestrator_quant_time": 0.00039076805114746094,
+            "upload_payload_size_bytes": 447834,
+            "client_metrics": [
+                {
+                    "client_id": 1,
+                    "download_payload_size_bytes": 345200,
+                    "overhead_quant_client": 0.0005023479461669922,
+                    "overhead_dequant_client": 0.003350496292114258,
+                    "rtt": 0.728283166885376,
+                    "status": "success"
+                },
+                {
+                    "client_id": 2,
+                    "download_payload_size_bytes": 344815,
+                    "overhead_quant_client": 0.0004634857177734375,
+                    "overhead_dequant_client": 0.0036478042602539062,
+                    "rtt": 1.3236477375030518,
+                    "status": "success"
+                },
+                {
+                    "client_id": 3,
+                    "download_payload_size_bytes": 346159,
+                    "overhead_quant_client": 0.00033855438232421875,
+                    "overhead_dequant_client": 0.0031571388244628906,
+                    "rtt": 2.817554473876953,
+                    "status": "success"
+                }
+            ],
+            "round": 5,
+            "successful_clients": 3,
+            "round_duration_seconds": 4.914696455001831,
+            "loss": 0.35407114028930664,
+            "accuracy": 0.8973000049591064
+        },
+        {
+            "orchestrator_quant_time": 0.0004630088806152344,
+            "upload_payload_size_bytes": 447025,
+            "client_metrics": [
+                {
+                    "client_id": 1,
+                    "download_payload_size_bytes": 344288,
+                    "overhead_quant_client": 0.0003292560577392578,
+                    "overhead_dequant_client": 0.003629446029663086,
+                    "rtt": 0.6824789047241211,
+                    "status": "success"
+                },
+                {
+                    "client_id": 2,
+                    "download_payload_size_bytes": 344073,
+                    "overhead_quant_client": 0.00033092498779296875,
+                    "overhead_dequant_client": 0.003533601760864258,
+                    "rtt": 1.3402810096740723,
+                    "status": "success"
+                },
+                {
+                    "client_id": 3,
+                    "download_payload_size_bytes": 345445,
+                    "overhead_quant_client": 0.0003294944763183594,
+                    "overhead_dequant_client": 0.003966569900512695,
+                    "rtt": 2.730013132095337,
+                    "status": "success"
+                }
+            ],
+            "round": 6,
+            "successful_clients": 3,
+            "round_duration_seconds": 4.80405330657959,
+            "loss": 0.3372235894203186,
+            "accuracy": 0.9031999707221985
+        },
+        {
+            "orchestrator_quant_time": 0.00047898292541503906,
+            "upload_payload_size_bytes": 445963,
+            "client_metrics": [
+                {
+                    "client_id": 1,
+                    "download_payload_size_bytes": 343408,
+                    "overhead_quant_client": 0.00037407875061035156,
+                    "overhead_dequant_client": 0.0034058094024658203,
+                    "rtt": 0.6844985485076904,
+                    "status": "success"
+                },
+                {
+                    "client_id": 2,
+                    "download_payload_size_bytes": 343378,
+                    "overhead_quant_client": 0.00035119056701660156,
+                    "overhead_dequant_client": 0.003178834915161133,
+                    "rtt": 1.276097059249878,
+                    "status": "success"
+                },
+                {
+                    "client_id": 3,
+                    "download_payload_size_bytes": 344595,
+                    "overhead_quant_client": 0.0003981590270996094,
+                    "overhead_dequant_client": 0.003177642822265625,
+                    "rtt": 2.907196521759033,
+                    "status": "success"
+                }
+            ],
+            "round": 7,
+            "successful_clients": 3,
+            "round_duration_seconds": 4.913464546203613,
+            "loss": 0.32573845982551575,
+            "accuracy": 0.9057000279426575
+        },
+        {
+            "orchestrator_quant_time": 0.00040459632873535156,
+            "upload_payload_size_bytes": 445139,
+            "client_metrics": [
+                {
+                    "client_id": 1,
+                    "download_payload_size_bytes": 342655,
+                    "overhead_quant_client": 0.0003771781921386719,
+                    "overhead_dequant_client": 0.003528594970703125,
+                    "rtt": 0.6312379837036133,
+                    "status": "success"
+                },
+                {
+                    "client_id": 2,
+                    "download_payload_size_bytes": 343598,
+                    "overhead_quant_client": 0.0008056163787841797,
+                    "overhead_dequant_client": 0.0031158924102783203,
+                    "rtt": 1.6345138549804688,
+                    "status": "success"
+                },
+                {
+                    "client_id": 3,
+                    "download_payload_size_bytes": 342707,
+                    "overhead_quant_client": 0.0004172325134277344,
+                    "overhead_dequant_client": 0.003150463104248047,
+                    "rtt": 2.913069248199463,
+                    "status": "success"
+                }
+            ],
+            "round": 8,
+            "successful_clients": 3,
+            "round_duration_seconds": 5.22443413734436,
+            "loss": 0.3179462254047394,
+            "accuracy": 0.9071999788284302
+        },
+        {
+            "orchestrator_quant_time": 0.00039958953857421875,
+            "upload_payload_size_bytes": 444359,
+            "client_metrics": [
+                {
+                    "client_id": 1,
+                    "download_payload_size_bytes": 340702,
+                    "overhead_quant_client": 0.0003948211669921875,
+                    "overhead_dequant_client": 0.004584789276123047,
+                    "rtt": 0.6519801616668701,
+                    "status": "success"
+                },
+                {
+                    "client_id": 2,
+                    "download_payload_size_bytes": 344118,
+                    "overhead_quant_client": 0.0003476142883300781,
+                    "overhead_dequant_client": 0.003110647201538086,
+                    "rtt": 1.3244349956512451,
+                    "status": "success"
+                },
+                {
+                    "client_id": 3,
+                    "download_payload_size_bytes": 341913,
+                    "overhead_quant_client": 0.0003151893615722656,
+                    "overhead_dequant_client": 0.0033082962036132812,
+                    "rtt": 2.720921516418457,
+                    "status": "success"
+                }
+            ],
+            "round": 9,
+            "successful_clients": 3,
+            "round_duration_seconds": 4.754768133163452,
+            "loss": 0.31270548701286316,
+            "accuracy": 0.9088000059127808
+        },
+        {
+            "orchestrator_quant_time": 0.0003752708435058594,
+            "upload_payload_size_bytes": 443453,
+            "client_metrics": [
+                {
+                    "client_id": 1,
+                    "download_payload_size_bytes": 339871,
+                    "overhead_quant_client": 0.00039768218994140625,
+                    "overhead_dequant_client": 0.0035462379455566406,
+                    "rtt": 0.6611466407775879,
+                    "status": "success"
+                },
+                {
+                    "client_id": 2,
+                    "download_payload_size_bytes": 343297,
+                    "overhead_quant_client": 0.0004425048828125,
+                    "overhead_dequant_client": 0.0033843517303466797,
+                    "rtt": 1.3396492004394531,
+                    "status": "success"
+                },
+                {
+                    "client_id": 3,
+                    "download_payload_size_bytes": 340942,
+                    "overhead_quant_client": 0.0003178119659423828,
+                    "overhead_dequant_client": 0.0034089088439941406,
+                    "rtt": 2.7161099910736084,
+                    "status": "success"
+                }
+            ],
+            "round": 10,
+            "successful_clients": 3,
+            "round_duration_seconds": 4.763402223587036,
+            "loss": 0.3084380626678467,
+            "accuracy": 0.9100000262260437
+        }
+    ]
+}
